@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Kainuun Keskussairaala – Laboratoriovastaukset</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #003366;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background: #eef3f8;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .error {
+      color: darkred;
+      margin-top: 10px;
+    }
+
+    .login-box {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 6px 0 12px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 15px;
+      background: #003366;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #00509e;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- KIRJAUTUMISSIVU -->
+<div class="container login-box" id="login">
+  <h1>Laboratoriopalvelu</h1>
+  <p>Kirjaudu potilastietoihin</p>
+
+  <label>Käyttäjätunnus</label>
+  <input type="text" id="username" placeholder="Sukunimi">
+
+  <label>Salasana</label>
+  <input type="password" id="password" placeholder="Salasana">
+
+  <button onclick="login()">Kirjaudu</button>
+
+  <p class="error" id="error"></p>
+</div>
+
+<!-- POTILAAN TIEDOT -->
+<div class="container hidden" id="patient">
+  <h1>Laboratoriotulokset</h1>
+
+  <p><strong>Potilas:</strong> Lundelin, Aino</p>
+  <p><strong>Tutkimuspäivä:</strong> 05.04.2026</p>
+
+  <h2>Verikokeet</h2>
+  <table>
+    <tr>
+      <th>Tutkimus</th>
+      <th>Tulos</th>
+      <th>Viitearvo</th>
+    </tr>
+    <tr>
+      <td>CRP</td>
+      <td>68 mg/l</td>
+      <td>&lt; 5 mg/l</td>
+    </tr>
+    <tr>
+      <td>Leukosyytit</td>
+      <td>14.2 x10⁹/l</td>
+      <td>3.4 – 8.2</td>
+    </tr>
+    <tr>
+      <td>Hemoglobiini</td>
+      <td>104 g/l</td>
+      <td>117 – 155</td>
+    </tr>
+    <tr>
+      <td>Glukoosi (paasto)</td>
+      <td>9.8 mmol/l</td>
+      <td>4.0 – 6.0</td>
+    </tr>
+  </table>
+
+  <h2>Lääkärin kommentti</h2>
+  <p>
+    Löydökset viittaavat selkeään tulehdustilaan.  
+    Jatkotutkimukset ja hoidon arviointi tarpeen.
+  </p>
+</div>
+
+<script>
+  function login() {
+    const user = document.getElementById("username").value.toLowerCase();
+    const pass = document.getElementById("password").value.toLowerCase();
+
+    // KÄYTTÄJÄTUNNUS: lundelin
+    // SALASANA: tulehdus
+    if (user === "lundelin" && pass === "tulehdus") {
+      document.getElementById("login").classList.add("hidden");
+      document.getElementById("patient").classList.remove("hidden");
+    } else {
+      document.getElementById("error").innerText =
+        "Virheellinen käyttäjätunnus tai salasana.";
+    }
+  }
+</script>
+
+</body>
+</html>
