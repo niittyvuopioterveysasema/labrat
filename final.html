@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Pelin loppu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .box {
+      max-width: 420px;
+      padding: 30px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      background: #111;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      font-size: 18px;
+      background: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .error {
+      color: #ff7777;
+      margin-top: 10px;
+    }
+
+    audio {
+      margin-top: 20px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box" id="loginBox">
+  <h2>Pelin loppu</h2>
+  <p>Syötä koodi kuullaksesi koko tarinan.</p>
+
+  <input type="password" id="password" placeholder="KOODI">
+  <button onclick="unlock()">Avaa</button>
+
+  <div class="error" id="error"></div>
+</div>
+
+<div class="box" id="audioBox" style="display:none;">
+  <h2>Kertomus</h2>
+  <p>Satu Antolan kertomana</p>
+
+  <audio controls autoplay>
+    story.mp3
+    Selaimesi ei tue äänentoistoa.
+  </audio>
+</div>
+
+<script>
+  function unlock() {
+    const pass = document.getElementById("password").value;
+
+    if (pass === "268343957") {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("audioBox").style.display = "block";
+    } else {
+      document.getElementById("error").innerText = "Väärä koodi.";
+    }
+  }
+</script>
+
+</body>
+</html>
