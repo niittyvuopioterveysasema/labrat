@@ -39,6 +39,7 @@
     audio {
       margin-top: 20px;
       width: 100%;
+      display: none; /* piilotetaan aluksi */
     }
   </style>
 </head>
@@ -51,34 +52,20 @@
 
   <button onclick="playMessage()">Kuuntele vastaaja</button>
 
-  <div id="player"></div>
+  <!-- AUDIO LUODAAN VALMIIKSI -->
+  <audio id="audio" controls playsinline preload="auto">
+    <source src="vastaaja.wav" type="audio/wav">
+    Selaimesi ei tue äänentoistoa.
+  </audio>
 </div>
-
 
 <script>
   function playMessage() {
-    const playerDiv = document.getElementById("player");
-    playerDiv.innerHTML = "";
-
-    const audio = document.createElement("audio");
-    audio.src = "vastaaja.wav";
-    audio.controls = true;
-    audio.preload = "auto";
-
-    // 🔑 RATKAISEVAT RIVIT MOBIILILLE
-    audio.setAttribute("playsinline", "");
-    audio.muted = false;
-    audio.volume = 1.0;
-
-    playerDiv.appendChild(audio);
-
-    audio.load();
-    audio.play().catch(err => {
-      console.log("Play estetty:", err);
-    });
+    const audio = document.getElementById("audio");
+    audio.style.display = "block";
+    audio.play();
   }
 </script>
-
 
 </body>
 </html>
