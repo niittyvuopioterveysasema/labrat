@@ -68,31 +68,15 @@
   <div class="error" id="error"></div>
 </div>
 
-
 <div class="box" id="audioBox" style="display:none;">
   <h2>Pelin tarina</h2>
   <p>Satu Antolan kertomana</p>
 
-  <button onclick="playStory()" style="padding:12px;font-size:18px;">
-    Kuuntele tarina
-  </button>
+  <button onclick="playStory()">Kuuntele tarina</button>
 
   <div id="player"></div>
 </div>
 
-
 <script>
   function unlock() {
-    const pass = document.getElementById("password").value;
 
-    if (pass === "268343957") {
-      document.getElementById("loginBox").style.display = "none";
-      document.getElementById("audioBox").style.display = "block";
-    } else {
-      document.getElementById("error").innerText = "Väärä koodi.";
-    }
-  }
-</script>
-
-</body>
-</html>
