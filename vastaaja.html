@@ -39,7 +39,6 @@
     audio {
       margin-top: 20px;
       width: 100%;
-      display: none; /* piilotetaan aluksi */
     }
   </style>
 </head>
@@ -50,19 +49,20 @@
   <h2>Vastaaja</h2>
   <p>Paina kuullaksesi viestin.</p>
 
-  <button onclick="playMessage()">Kuuntele vastaaja</button>
-
-  <!-- AUDIO LUODAAN VALMIIKSI -->
-  <audio id="audio" controls playsinline preload="auto">
+  <!-- AUDIO ON VALMIIKSI HTML:SSÄ -->
+  <audio id="audio" preload="auto" playsinline>
     <source src="vastaaja.wav" type="audio/wav">
     Selaimesi ei tue äänentoistoa.
   </audio>
+
+  <button onclick="playMessage()">Kuuntele vastaaja</button>
 </div>
 
 <script>
   function playMessage() {
     const audio = document.getElementById("audio");
-    audio.style.display = "block";
+
+    audio.currentTime = 0; // varmistaa aloituksen alusta
     audio.play();
   }
 </script>
