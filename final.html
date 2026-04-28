@@ -68,14 +68,18 @@
   <div class="error" id="error"></div>
 </div>
 
+
 <div class="box" id="audioBox" style="display:none;">
   <h2>Pelin tarina</h2>
   <p>Satu Antolan kertomana</p>
 
-  <audio controls autoplay>
-    story.wav
-  </audio>
+  <button onclick="playStory()" style="padding:12px;font-size:18px;">
+    Kuuntele tarina
+  </button>
+
+  <div id="player"></div>
 </div>
+
 
 <script>
   function unlock() {
