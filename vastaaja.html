@@ -54,6 +54,7 @@
   <div id="player"></div>
 </div>
 
+
 <script>
   function playMessage() {
     const playerDiv = document.getElementById("player");
@@ -62,14 +63,18 @@
     const audio = document.createElement("audio");
     audio.src = "vastaaja.wav";
     audio.controls = true;
+    audio.preload = "auto";
 
     playerDiv.appendChild(audio);
 
+    // 🔑 TÄRKEÄT RIVIT MOBIILILLE
+    audio.load();
     audio.play().catch(err => {
       console.log("Play estetty:", err);
     });
   }
 </script>
+
 
 </body>
 </html>
