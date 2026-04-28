@@ -77,6 +77,37 @@
   <div id="player"></div>
 </div>
 
+
 <script>
   function unlock() {
+    const pass = document.getElementById("password").value;
+
+    if (pass === "268343957") {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("audioBox").style.display = "block";
+    } else {
+      document.getElementById("error").innerText = "Väärä koodi.";
+    }
+  }
+
+  function playStory() {
+    const playerDiv = document.getElementById("player");
+
+    // tyhjennä mahdollinen vanha soitin
+    playerDiv.innerHTML = "";
+
+    // luo audio-olio
+    const audio = document.createElement("audio");
+    audio.src = "story.wav";
+    audio.controls = true;
+
+    playerDiv.appendChild(audio);
+
+    // TÄMÄ on ratkaiseva rivi mobiilille
+    audio.play().catch(err => {
+      console.log("Play estetty:", err);
+    });
+  }
+</script>
+
 
