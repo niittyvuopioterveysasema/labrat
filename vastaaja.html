@@ -26,16 +26,6 @@
       background: #111;
     }
 
-    button {
-      margin-top: 20px;
-      padding: 14px;
-      width: 100%;
-      font-size: 18px;
-      background: #fff;
-      border: none;
-      cursor: pointer;
-    }
-
     audio {
       margin-top: 20px;
       width: 100%;
@@ -47,25 +37,13 @@
 
 <div class="box">
   <h2>Vastaaja</h2>
-  <p>Paina kuullaksesi viestin.</p>
+  <p>Paina toistoa kuullaksesi viestin.</p>
 
-  <!-- AUDIO ON VALMIIKSI HTML:SSÄ -->
-  <audio id="audio" preload="auto" playsinline>
+  <audio controls playsinline preload="auto">
     <source src="vastaaja.wav" type="audio/wav">
     Selaimesi ei tue äänentoistoa.
   </audio>
-
-  <button onclick="playMessage()">Kuuntele vastaaja</button>
 </div>
-
-<script>
-  function playMessage() {
-    const audio = document.getElementById("audio");
-
-    audio.currentTime = 0; // varmistaa aloituksen alusta
-    audio.play();
-  }
-</script>
 
 </body>
 </html>
